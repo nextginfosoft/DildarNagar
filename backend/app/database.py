@@ -9,19 +9,34 @@ load_dotenv(BASE_DIR / ".env")
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-if DATABASE_URL and DATABASE_URL.startswith("postgresql://"):
-    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+# Initialize engine as None, will be set only if DATABASE_URL is valid
+engine = None
+AsyncSessionLocal = None
 
-engine = create_async_engine(DATABASE_URL, echo=True)
-
-AsyncSessionLocal = sessionmaker(
-    engine, class_=AsyncSession, expire_on_commit=False
-)
+if DATABASE_URL:
+    if DATABASE_URL.startswith("postgresql://"):
+        DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+    
+    try:
+        engine = create_async_engine(DATABASE_URL, echo=True)
+        AsyncSessionLocal = sessionmaker(
+            engine, class_=AsyncSession, expire_on_commit=False
+        )
+        print(f"✅ Database engine created successfully")
+    except Exception as e:
+        print(f"⚠️ Failed to create database engine: {str(e)}")
+        engine = None
+        AsyncSessionLocal = None
+else:
+    print("⚠️ DATABASE_URL not set - database features disabled")
 
 Base = declarative_base()
 
 # Dependency — use this in all route handlers
 async def get_db():
+    if not AsyncSessionLocal:
+        raise RuntimeError("Database not initialized - DATABASE_URL not set or invalid")
+    
     async with AsyncSessionLocal() as session:
         try:
             yield session
