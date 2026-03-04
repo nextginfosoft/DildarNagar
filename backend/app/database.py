@@ -1,18 +1,6 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Only load .env for local development, never on Railway/production
-# Railway sets all variables via the UI, so .env should not override them
-if not os.getenv("PORT"):  # Railway sets PORT env var
-    try:
-        from dotenv import load_dotenv
-        load_dotenv(BASE_DIR / ".env")
-    except ImportError:
-        pass
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
