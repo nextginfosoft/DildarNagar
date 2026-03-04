@@ -1,5 +1,9 @@
 // Central API connector — all fetch calls go through here
-const API_BASE = window.API_BASE || 'http://127.0.0.1:8001/api';
+// For production: set window.API_BASE in index.html or use environment variable
+const API_BASE = window.API_BASE || 
+                (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+                  ? 'http://127.0.0.1:8001/api' 
+                  : 'https://your-backend.railway.app/api'); // Update with your backend URL
 
 const parseJsonSafe = async (response) => {
   const contentType = response.headers.get('content-type') || '';
