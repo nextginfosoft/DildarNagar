@@ -26,7 +26,14 @@ app = FastAPI(
 # CORS — allow your frontend to call the API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("FRONTEND_URL"), "http://localhost:5500"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5500",
+        "https://dildarnagar.in",
+        "https://www.dildarnagar.in",
+        os.getenv("FRONTEND_URL", "http://localhost:3000")
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
