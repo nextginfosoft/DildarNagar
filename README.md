@@ -2,6 +2,8 @@
 
 A comprehensive web platform for discovering and listing local services, businesses, events, job opportunities, and news in the DildarNagar community.
 
+**Copyright © 2026 NextG Infosoft Technology. All rights reserved.**
+
 ## 🎯 Features
 
 - **Listings Management** - Browse and post local business listings with images
@@ -193,15 +195,17 @@ python test_search_api.py
 
 ## 📄 License
 
-This project is open source. Specify your license here.
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+Licensed to and maintained by **NextG Infosoft Technology**.
 
 ## 👤 Author
 
-DildarNagar Community Platform
+**NextG Infosoft Technology**  
+DildarNagar Local Directory Platform
 
 ## 📞 Support
 
-For issues and questions, please open an issue on GitHub.
+For issues and questions, please open an issue on GitHub or contact NextG Infosoft Technology.
 
 ---
 
