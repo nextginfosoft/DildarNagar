@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Listing Test</title>
+</head>
+<body>
+  <h1>Listing Test Page</h1>
+  <div id="status">Loading...</div>
+  <div id="output"></div>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/listings.js"></script>
+
+  <script>
+    (async () => {
+      const status = document.getElementById('status');
+      const output = document.getElementById('output');
+      
+      try {
+        // Test 1: Check if window.api exists
+        status.innerHTML = 'Testing window.api...';
+        if (!window.api) {
+          throw new Error('window.api not found!');
+        }
+        console.log('✓ window.api exists');
+        
+        // Test 2: Check if window.API_BASE exists
+        if (!window.API_BASE) {
+          throw new Error('window.API_BASE not found!');
+        }
+        console.log('✓ window.API_BASE:', window.API_BASE);
+        
+        // Test 3: Check if window.listings exists
+        if (!window.listings) {
+          throw new Error('window.listings not found!');
+        }
+        console.log('✓ window.listings exists');
+        
+        // Test 4: Fetch listings
+        status.innerHTML = 'Fetching listings...';
+        const listings = await window.listings.fetchListings({ limit: 5 });
+        console.log('✓ Fetched listings:', listings);
+        
+        // Display results
+        status.innerHTML = `✅ Success! Found ${listings.length} listings`;
+        output.innerHTML = '<h2>Listings:</h2>' + listings.map(l => 
+          `<div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+            <strong>ID ${l.id}:</strong> ${l.title}<br>
+            <em>${l.category}</em><br>
+            <button onclick="window.location.href='listing-detail.html?id=${l.id}'">View Detail</button>
+          </div>`
+        ).join('');
+        
+      } catch (error) {
+        console.error('❌ Error:', error);
+        status.innerHTML = `❌ Error: ${error.message}`;
+        output.innerHTML = `<pre>${error.stack}</pre>`;
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dildarnagar.in — आपका अपना शहर का पोर्टल</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --saffron: #E8680A;
+    --saffron-light: #FF8C2A;
+    --saffron-dark: #C45500;
+    --navy: #0F1F5C;
+    --navy-light: #1A2F7A;
+    --navy-dark: #080F30;
+    --cream: #FFF8F0;
+    --white: #ffffff;
+    --gray-50: #f9fafb;
+    --gray-100: #F3F4F6;
+    --gray-200: #e5e7eb;
+    --gray-400: #9CA3AF;
+    --gray-600: #4B5563;
+    --gray-800: #1F2937;
+    --green: #10B981;
+    --red: #EF4444;
+    --gold: #F59E0B;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
+    --shadow-xl: 0 16px 48px rgba(0,0,0,0.18);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 20px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Baloo 2', 'Noto Sans Devanagari', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    overflow-x: hidden;
+  }
+
+  /* ── TOP EMERGENCY BAR ── */
+  .emergency-bar {
+    background: var(--navy-dark);
+    color: var(--white);
+    font-size: 12px;
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 20px;
+    gap: 12px;
+  }
+  .emergency-bar .emg-left { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .emergency-bar .emg-item { display:flex; align-items:center; gap:5px; }
+  .emergency-bar .emg-item i { color: var(--saffron); }
+  .emergency-bar .emg-item a { color:#fff; text-decoration:none; font-weight:600; }
+  .emergency-bar .emg-right { display:flex; gap:12px; align-items:center; }
+  .emg-right a { color: var(--gray-400); font-size:14px; transition: color 0.2s; }
+  .emg-right a:hover { color: var(--saffron); }
+
+  /* ── NAVBAR ── */
+  .navbar {
+    background: var(--white);
+    box-shadow: 0 2px 16px rgba(15,31,92,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .nav-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 68px;
+    gap: 20px;
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .logo-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+  }
+  .logo-name span { color: var(--saffron); }
+  .logo-tagline { font-size: 10px; color: var(--gray-400); letter-spacing: 0.5px; }
+  .nav-search {
+    flex: 1;
+    max-width: 480px;
+    position: relative;
+  }
+  .nav-search input {
+    width: 100%;
+    padding: 10px 48px 10px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .nav-search input:focus { border-color: var(--saffron); }
+  .nav-search button {
+    position: absolute; right:4px; top:4px;
+    background: var(--saffron); border:none; cursor:pointer;
+    width:34px; height:34px; border-radius:50%;
+    color:#fff; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+    transition: background 0.2s;
+  }
+  .nav-search button:hover { background: var(--saffron-dark); }
+  .nav-links { display:flex; align-items:center; gap:4px; }
+  .nav-links a {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-600);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--saffron); background: var(--cream); }
+  .nav-links a.active { color: var(--saffron); }
+  .btn-nav {
+    background: var(--saffron);
+    color: var(--white) !important;
+    border-radius: 50px !important;
+    padding: 8px 18px !important;
+  }
+  .btn-nav:hover { background: var(--saffron-dark) !important; color:#fff !important; }
+  .hamburger { display:none; background:none; border:none; cursor:pointer; font-size:22px; color:var(--navy); }
+
+  /* ── BREAKING NEWS TICKER ── */
+  .ticker-wrap {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 3px solid var(--saffron);
+  }
+  .ticker-inner {
+    display: flex;
+    align-items: stretch;
+    height: 38px;
+  }
+  .ticker-label {
+    background: var(--saffron);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+  .ticker-label i { animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .ticker-content {
+    flex:1;
+    overflow: hidden;
+    display:flex;
+    align-items:center;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 60px;
+    animation: ticker-scroll 40s linear infinite;
+    white-space: nowrap;
+    align-items:center;
+  }
+  @keyframes ticker-scroll {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  .ticker-item {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    display:flex; align-items:center; gap:8px;
+  }
+  .ticker-item::before { content:'●'; color:var(--saffron); font-size:8px; }
+
+  /* ── HERO BANNER CAROUSEL ── */
+  .hero-section {
+    background: var(--navy-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-carousel {
+    position: relative;
+    height: 360px;
+    overflow: hidden;
+  }
+  .hero-slide {
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .hero-slide.active { opacity:1; }
+  .hero-slide-1 {
+    background: linear-gradient(135deg, #0F1F5C 0%, #1A2F7A 40%, #2A4A9A 100%);
+  }
+  .hero-slide-2 {
+    background: linear-gradient(135deg, #7B1E0A 0%, #C45500 40%, #E8680A 100%);
+  }
+  .hero-slide-3 {
+    background: linear-gradient(135deg, #065F46 0%, #059669 40%, #10B981 100%);
+  }
+  .hero-slide-4 {
+    background: linear-gradient(135deg, #1E1B4B 0%, #312E81 40%, #4338CA 100%);
+  }
+  .hero-pattern {
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
+  }
+  .hero-content {
+    position: relative;
+    z-index:2;
+    padding: 0 60px;
+    max-width: 640px;
+  }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color:#fff; font-size:11px; font-weight:700;
+    padding: 4px 12px; border-radius:50px; letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:16px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hero-title span { color: var(--saffron-light); }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-hero-primary {
+    background: var(--saffron);
+    color:#fff; padding: 12px 28px;
+    border-radius:50px; font-weight:700; font-size:14px;
+    text-decoration:none; border:none; cursor:pointer;
+    transition: all 0.2s;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:inherit;
+  }
+  .btn-hero-primary:hover { background:#fff; color:var(--saffron); transform:translateY(-2px); }
+  .btn-hero-outline {
+    background:transparent; color:#fff;
+    border: 2px solid rgba(255,255,255,0.5);
+    padding:11px 24px; border-radius:50px; font-weight:600; font-size:14px;
+    text-decoration:none; cursor:pointer;
+    transition: all 0.2s; display:inline-flex; align-items:center; gap:8px;
+    font-family:inherit;
+  }
+  .btn-hero-outline:hover { background:rgba(255,255,255,0.15); border-color:#fff; }
+  .hero-indicators {
+    position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+    display:flex; gap:8px; z-index:3;
+  }
+  .hero-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(255,255,255,0.4); cursor:pointer;
+    transition: all 0.3s;
+  }
+  .hero-dot.active { background:#fff; width:24px; border-radius:4px; }
+  .hero-nav-btn {
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,0.15); border:none; color:#fff;
+    width:44px; height:44px; border-radius:50%;
+    cursor:pointer; font-size:18px; z-index:3;
+    display:flex; align-items:center; justify-content:center;
+    transition: background 0.2s;
+  }
+  .hero-nav-btn:hover { background:rgba(255,255,255,0.3); }
+  .hero-prev { left:16px; }
+  .hero-next { right:16px; }
+  /* Decorative hero graphic */
+  .hero-graphic {
+    position:absolute; right:80px; top:50%; transform:translateY(-50%);
+    width:220px; height:220px; z-index:2;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-graphic-circle {
+    width:200px; height:200px; border-radius:50%;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center;
+    font-size:80px;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+  /* ── QUICK STATS BAR ── */
+  .stats-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 16px 20px;
+  }
+  .stats-inner {
+    max-width:1280px; margin:0 auto;
+    display:flex; justify-content:space-around; align-items:center;
+    flex-wrap:wrap; gap:12px;
+  }
+  .stat-item {
+    display:flex; align-items:center; gap:10px;
+    padding: 0 20px;
+    border-right: 1px solid var(--gray-200);
+  }
+  .stat-item:last-child { border-right:none; }
+  .stat-icon {
+    width:40px; height:40px; border-radius:10px;
+    background: var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px;
+  }
+  .stat-num { font-size:20px; font-weight:800; color:var(--navy); }
+  .stat-label { font-size:11px; color:var(--gray-400); font-weight:500; }
+
+  /* ── MAIN SEARCH BAR ── */
+  .main-search-section {
+    background: linear-gradient(135deg, #0F1F5C 0%, #1A2F7A 50%, #C45500 100%);
+    padding: 40px 20px;
+    border-bottom: 2px solid var(--saffron);
+    position: relative;
+    overflow: hidden;
+  }
+  .main-search-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .main-search-inner {
+    max-width:950px; margin:0 auto; text-align:center; position: relative; z-index: 1;
+  }
+  .main-search-inner h2 {
+    font-size:28px; font-weight:800; color:#fff; margin-bottom:6px; letter-spacing: -0.5px;
+  }
+  .main-search-inner h2 span {
+    color: var(--saffron-light);
+  }
+  .main-search-inner p { 
+    font-size:14px; color:rgba(255,255,255,0.85); margin-bottom:24px; font-weight: 500;
+  }
+  .search-box {
+    display:flex; gap:0;
+    background:#fff; border-radius:50px;
+    box-shadow: var(--shadow-lg);
+    overflow:hidden; border:2px solid var(--saffron);
+  }
+  .search-box select {
+    padding: 0 16px;
+    border:none; outline:none;
+    font-family:inherit; font-size:14px; font-weight:600;
+    color:var(--navy); background:transparent;
+    border-right: 1px solid var(--gray-200);
+    min-width:140px; cursor:pointer;
+  }
+  .search-box input {
+    flex:1; padding:14px 20px;
+    border:none; outline:none;
+    font-family:inherit; font-size:15px;
+    color:var(--gray-800);
+  }
+  .search-box button {
+    background: var(--saffron); border:none; color:#fff;
+    padding: 0 28px; font-family:inherit; font-size:15px;
+    font-weight:700; cursor:pointer;
+    display:flex; align-items:center; gap:8px;
+    transition: background 0.2s;
+  }
+  .search-box button:hover { background:var(--saffron-dark); }
+  .search-tags { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+  }
+  .search-tag {
+    background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3);
+    color: #fff; padding: 6px 14px; border-radius: 50px;
+    font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s;
+    text-decoration: none; display: inline-flex; align-items: center;
+  }
+  .search-tag:hover { 
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+  }
+
+  /* ── FILTER CHIPS & SEARCH RESULTS ── */
+  .filter-chip {
+    padding: 8px 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--navy);
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .filter-chip:hover {
+    background: white;
+    border-color: var(--saffron);
+    color: var(--saffron);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(232, 104, 10, 0.2);
+  }
+  .filter-chip.active {
+    background: var(--saffron);
+    color: white;
+    border-color: var(--saffron);
+    box-shadow: 0 4px 16px rgba(232, 104, 10, 0.3);
+  }
+  .search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .search-result-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+  }
+  .search-result-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    border-color: var(--saffron-light);
+  }
+  .search-result-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  }
+  .search-result-card h3 {
+    padding: 14px 16px 6px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  .search-result-card .category-badge,
+  .search-result-card .job-type-badge {
+    display: inline-block;
+    margin: 4px 16px 0 0;
+    padding: 5px 10px;
+    background: var(--cream);
+    color: var(--saffron);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .search-result-card .location {
+    color: var(--gray-700);
+    font-size: 12px;
+    padding: 2px 16px 0 0;
+    font-weight: 500;
+  }
+  .search-result-card .description,
+  .search-result-card .summary,
+  .search-result-card .company {
+    color: var(--gray-600);
+    font-size: 12px;
+    padding: 6px 16px;
+    margin: 0;
+    line-height: 1.4;
+  }
+  .search-result-card .price {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--saffron);
+    padding: 8px 16px 12px;
+  }
+  .search-result-card .meta {
+    color: var(--gray-500);
+    font-size: 11px;
+    padding: 8px 16px 12px;
+    padding: 8px 16px 16px;
+  }
+  .search-result-card .salary {
+    color: var(--green);
+    font-weight: 700;
+    padding: 8px 16px 12px;
+    font-size: 12px;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding:48px 20px; }
+  .section-alt { background:var(--white); }
+  .container { max-width:1280px; margin:0 auto; }
+  .section-header {
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:28px;
+  }
+  .section-title {
+    font-size:26px; font-weight:800; color:var(--navy); line-height:1.2;
+  }
+  .section-title span { color:var(--saffron); }
+  .section-subtitle { font-size:14px; color:var(--gray-400); margin-top:4px; }
+  .section-link {
+    color:var(--saffron); font-size:13px; font-weight:700;
+    text-decoration:none; display:flex; align-items:center; gap:4px;
+    white-space:nowrap;
+  }
+  .section-link:hover { color:var(--saffron-dark); }
+
+  /* ── CATEGORIES ── */
+  .categories-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap:12px;
+  }
+  .cat-card {
+    background:#fff; border:1px solid var(--gray-200);
+    border-radius:var(--radius); padding:20px 12px;
+    text-align:center; cursor:pointer;
+    transition: all 0.25s;
+    text-decoration:none; color:inherit;
+    display:block;
+  }
+  .cat-card:hover {
+    border-color:var(--saffron); transform:translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .cat-icon {
+    font-size:28px; margin-bottom:8px; display:block;
+    transition: transform 0.25s;
+  }
+  .cat-card:hover .cat-icon { transform:scale(1.2); }
+  .cat-name { font-size:12px; font-weight:700; color:var(--navy); }
+  .cat-count { font-size:10px; color:var(--gray-400); margin-top:2px; }
+
+  /* ── LISTINGS GRID ── */
+  .listings-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap:20px;
+  }
+  .listing-card {
+    background:#fff; border-radius:var(--radius);
+    border:1px solid var(--gray-200); overflow:hidden;
+    transition: all 0.25s;
+    position:relative;
+  }
+  .listing-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--saffron); }
+  .listing-img {
+    height:160px; overflow:hidden; background: linear-gradient(135deg, #e8eef5, #d0dae8);
+    position:relative; display:flex; align-items:center; justify-content:center;
+    font-size:48px;
+  }
+  .listing-badge {
+    position:absolute; top:10px; left:10px;
+    font-size:10px; font-weight:800; padding:3px 8px; border-radius:4px;
+    letter-spacing:0.5px; text-transform:uppercase;
+  }
+  .badge-featured { background:var(--gold); color:#fff; }
+  .badge-verified { background:var(--green); color:#fff; }
+  .badge-sponsored { background:var(--navy); color:#fff; }
+  .badge-new { background:var(--saffron); color:#fff; }
+  .listing-body { padding:16px; }
+  .listing-cat { font-size:11px; color:var(--saffron); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
+  .listing-name { font-size:16px; font-weight:800; color:var(--navy); margin:4px 0; }
+  .listing-addr { font-size:12px; color:var(--gray-400); display:flex; align-items:center; gap:4px; margin-bottom:8px; }
+  .listing-desc { font-size:13px; color:var(--gray-600); line-height:1.5; margin-bottom:12px; }
+  .listing-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .listing-rating {
+    display:flex; align-items:center; gap:4px;
+    font-size:12px; font-weight:700; color:var(--gold);
+  }
+  .listing-rating span { color:var(--gray-600); font-weight:400; }
+  .listing-open { font-size:11px; font-weight:700; }
+  .open { color:var(--green); }
+  .closed { color:var(--red); }
+  .listing-footer {
+    padding:12px 16px; border-top:1px solid var(--gray-100);
+    display:flex; gap:8px;
+  }
+  .btn-call {
+    flex:1; background:var(--green); color:#fff;
+    border:none; border-radius:var(--radius-sm); padding:8px;
+    font-size:12px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:4px;
+    font-family:inherit; transition:background 0.2s;
+  }
+  .btn-call:hover { background:#059669; }
+  .btn-whatsapp {
+    flex:1; background:#25D366; color:#fff;
+    border:none; border-radius:var(--radius-sm); padding:8px;
+    font-size:12px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:4px;
+    font-family:inherit; transition:background 0.2s;
+  }
+  .btn-whatsapp:hover { background:#128C7E; }
+  .btn-more {
+    background:var(--gray-100); color:var(--gray-600);
+    border:none; border-radius:var(--radius-sm); padding:8px 12px;
+    font-size:12px; font-weight:700; cursor:pointer;
+    font-family:inherit; transition:background 0.2s;
+  }
+  .btn-more:hover { background:var(--gray-200); }
+
+  /* ── SERVICES SECTION ── */
+  .services-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap:16px;
+  }
+  .service-card {
+    background:#fff; border-radius:var(--radius);
+    border:1px solid var(--gray-200); padding:20px;
+    cursor:pointer; transition:all 0.25s; text-decoration:none;
+    display:block;
+  }
+  .service-card:hover { border-color:var(--saffron); transform:translateY(-3px); box-shadow:var(--shadow-md); }
+  .service-icon-wrap {
+    width:52px; height:52px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; margin-bottom:12px;
+  }
+  .service-name { font-size:14px; font-weight:800; color:var(--navy); margin-bottom:4px; }
+  .service-count { font-size:12px; color:var(--gray-400); margin-bottom:12px; }
+  .service-tag {
+    font-size:11px; padding:3px 10px; border-radius:50px;
+    font-weight:700; display:inline-block;
+  }
+
+  /* ── NEWS SECTION ── */
+  .news-grid {
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap:24px;
+  }
+  .news-main { display:flex; flex-direction:column; gap:16px; }
+  .news-featured {
+    background:#fff; border-radius:var(--radius);
+    border:1px solid var(--gray-200); overflow:hidden;
+    cursor:pointer; transition:all 0.25s;
+  }
+  .news-featured:hover { box-shadow:var(--shadow-lg); }
+  .news-feat-img {
+    height:200px; background:linear-gradient(135deg,#0F1F5C,#2A4A9A);
+    display:flex; align-items:center; justify-content:center;
+    font-size:60px; position:relative;
+  }
+  .news-feat-overlay {
+    position:absolute; bottom:0; left:0; right:0;
+    padding:16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  }
+  .news-cat-tag {
+    font-size:10px; font-weight:800; text-transform:uppercase;
+    letter-spacing:1px; padding:3px 8px; border-radius:4px;
+    display:inline-block; margin-bottom:6px;
+  }
+  .news-feat-title { font-size:18px; font-weight:800; color:#fff; line-height:1.3; }
+  .news-feat-body { padding:16px; }
+  .news-meta { display:flex; align-items:center; gap:12px; font-size:11px; color:var(--gray-400); margin-bottom:8px; }
+  .news-excerpt { font-size:13px; color:var(--gray-600); line-height:1.6; }
+  .news-list { display:flex; flex-direction:column; gap:12px; }
+  .news-item {
+    background:#fff; border-radius:var(--radius-sm);
+    border:1px solid var(--gray-200); padding:14px;
+    cursor:pointer; transition:all 0.25s; display:flex; gap:12px;
+  }
+  .news-item:hover { border-color:var(--saffron); box-shadow:var(--shadow-sm); }
+  .news-item-icon {
+    width:48px; height:48px; border-radius:10px; flex-shrink:0;
+    background:var(--cream); display:flex; align-items:center; justify-content:center;
+    font-size:22px;
+  }
+  .news-item-title { font-size:13px; font-weight:700; color:var(--navy); line-height:1.4; margin-bottom:4px; }
+  .news-item-meta { font-size:11px; color:var(--gray-400); }
+
+  .news-sidebar { display:flex; flex-direction:column; gap:16px; }
+  .news-sidebar-card {
+    background:#fff; border-radius:var(--radius);
+    border:1px solid var(--gray-200); overflow:hidden;
+  }
+  .sidebar-header {
+    background: var(--navy); color:#fff; padding:12px 16px;
+    font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .sidebar-header i { color:var(--saffron); }
+  .sidebar-body { padding:12px; }
+  .sidebar-news-item {
+    display:flex; gap:10px; padding:10px 0;
+    border-bottom:1px solid var(--gray-100); cursor:pointer;
+  }
+  .sidebar-news-item:last-child { border-bottom:none; }
+  .sidebar-news-num {
+    width:24px; height:24px; border-radius:6px; flex-shrink:0;
+    background:var(--cream); display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:800; color:var(--saffron);
+  }
+  .sidebar-news-title { font-size:12px; font-weight:700; color:var(--navy); line-height:1.4; }
+  .sidebar-news-time { font-size:10px; color:var(--gray-400); margin-top:2px; }
+
+  /* ── AD BANNER STRIPS ── */
+  .ad-strip {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    padding:20px; margin:32px 0;
+    border-radius:var(--radius); position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .ad-strip::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 80% 50%, rgba(232,104,10,0.15), transparent 60%);
+  }
+  .ad-strip-content { position:relative; z-index:1; }
+  .ad-strip-label {
+    font-size:10px; font-weight:800; color:rgba(255,255,255,0.5);
+    letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;
+  }
+  .ad-strip-title { font-size:22px; font-weight:800; color:#fff; }
+  .ad-strip-title span { color:var(--saffron-light); }
+  .ad-strip-sub { font-size:13px; color:rgba(255,255,255,0.7); margin-top:4px; }
+  .ad-strip-cta {
+    position:relative; z-index:1;
+    background:var(--saffron); color:#fff; padding:12px 24px;
+    border-radius:50px; font-weight:800; font-size:14px; cursor:pointer;
+    border:none; font-family:inherit; white-space:nowrap; transition:all 0.2s;
+  }
+  .ad-strip-cta:hover { background:#fff; color:var(--saffron); }
+
+  /* ── PRICING SECTION ── */
+  .pricing-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:24px;
+    align-items:start;
+  }
+  .price-card {
+    background:#fff; border-radius:var(--radius-lg);
+    border:2px solid var(--gray-200); padding:32px 28px;
+    position:relative; transition:all 0.25s;
+  }
+  .price-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-xl); }
+  .price-card.popular {
+    border-color:var(--saffron);
+    box-shadow: 0 8px 32px rgba(232,104,10,0.15);
+  }
+  .popular-badge {
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+    background:var(--saffron); color:#fff; font-size:11px; font-weight:800;
+    padding:4px 16px; border-radius:50px; white-space:nowrap;
+    letter-spacing:0.5px; text-transform:uppercase;
+  }
+  .price-plan { font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--gray-400); margin-bottom:8px; }
+  .price-name { font-size:22px; font-weight:800; color:var(--navy); margin-bottom:16px; }
+  .price-amount { display:flex; align-items:baseline; gap:4px; margin-bottom:6px; }
+  .price-currency { font-size:20px; font-weight:700; color:var(--gray-600); }
+  .price-number { font-size:48px; font-weight:800; color:var(--navy); line-height:1; }
+  .price-per { font-size:14px; color:var(--gray-400); }
+  .price-desc { font-size:13px; color:var(--gray-400); margin-bottom:24px; }
+  .price-features { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+  .price-features li { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--gray-600); }
+  .price-features li i { font-size:14px; flex-shrink:0; }
+  .price-features li.has { color:var(--gray-700); }
+  .price-features li.has i { color:var(--green); }
+  .price-features li.no { color:var(--gray-400); text-decoration:line-through; }
+  .price-features li.no i { color:var(--gray-300); }
+  .btn-price {
+    width:100%; padding:13px; border-radius:var(--radius-sm);
+    font-family:inherit; font-size:14px; font-weight:800;
+    cursor:pointer; transition:all 0.2s; border:2px solid;
+  }
+  .btn-price-outline { background:#fff; color:var(--navy); border-color:var(--navy); }
+  .btn-price-outline:hover { background:var(--navy); color:#fff; }
+  .btn-price-filled { background:var(--saffron); color:#fff; border-color:var(--saffron); }
+  .btn-price-filled:hover { background:var(--saffron-dark); }
+
+  /* ── EVENTS ── */
+  .events-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:16px;
+  }
+  .event-card {
+    background:#fff; border-radius:var(--radius); border:1px solid var(--gray-200);
+    padding:16px; display:flex; gap:16px; cursor:pointer;
+    transition:all 0.25s; align-items:flex-start;
+  }
+  .event-card:hover { border-color:var(--saffron); box-shadow:var(--shadow-md); }
+  .event-date {
+    min-width:56px; background:var(--navy); border-radius:10px;
+    padding:10px 8px; text-align:center; flex-shrink:0;
+  }
+  .event-day { font-size:24px; font-weight:800; color:#fff; line-height:1; }
+  .event-month { font-size:11px; color:var(--saffron); font-weight:700; text-transform:uppercase; }
+  .event-title { font-size:14px; font-weight:800; color:var(--navy); margin-bottom:4px; line-height:1.4; }
+  .event-place { font-size:12px; color:var(--gray-400); display:flex; align-items:center; gap:4px; margin-bottom:6px; }
+  .event-tag { font-size:10px; padding:2px 8px; border-radius:4px; font-weight:700; display:inline-block; }
+
+  /* ── EMERGENCY PANEL ── */
+  .emergency-panel {
+    background: linear-gradient(135deg, #7B0D0D 0%, #DC2626 100%);
+    border-radius:var(--radius-lg); padding:28px;
+    position:relative; overflow:hidden;
+  }
+  .emergency-panel::before {
+    content:''; position:absolute;
+    top:-40px; right:-40px; width:200px; height:200px;
+    background:rgba(255,255,255,0.06); border-radius:50%;
+  }
+  .emg-panel-title { font-size:20px; font-weight:800; color:#fff; margin-bottom:4px; display:flex; align-items:center; gap:10px; }
+  .emg-panel-sub { font-size:13px; color:rgba(255,255,255,0.7); margin-bottom:20px; }
+  .emg-contacts-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap:12px;
+  }
+  .emg-contact {
+    background:rgba(255,255,255,0.1); border-radius:var(--radius-sm);
+    padding:14px; text-align:center; cursor:pointer;
+    transition:background 0.2s;
+  }
+  .emg-contact:hover { background:rgba(255,255,255,0.2); }
+  .emg-contact-icon { font-size:24px; margin-bottom:6px; }
+  .emg-contact-name { font-size:12px; font-weight:700; color:#fff; margin-bottom:2px; }
+  .emg-contact-num { font-size:14px; font-weight:800; color:var(--gold); }
+
+  /* ── JOBS ── */
+  .jobs-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap:16px;
+  }
+  .job-card {
+    background:#fff; border-radius:var(--radius);
+    border:1px solid var(--gray-200); padding:20px;
+    transition:all 0.25s; cursor:pointer;
+  }
+  .job-card:hover { border-color:var(--saffron); box-shadow:var(--shadow-md); }
+  .job-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+  .job-company { font-size:12px; color:var(--gray-400); font-weight:600; }
+  .job-title { font-size:16px; font-weight:800; color:var(--navy); margin-bottom:4px; }
+  .job-type { font-size:11px; padding:3px 10px; border-radius:4px; font-weight:700; }
+  .full-time { background:#D1FAE5; color:#065F46; }
+  .part-time { background:#FEF3C7; color:#92400E; }
+  .job-details { display:flex; flex-wrap:wrap; gap:12px; font-size:12px; color:var(--gray-600); }
+  .job-detail { display:flex; align-items:center; gap:4px; }
+  .job-footer { margin-top:12px; display:flex; justify-content:space-between; align-items:center; }
+  .job-salary { font-size:14px; font-weight:800; color:var(--green); }
+  .btn-apply {
+    background:var(--navy); color:#fff; border:none;
+    padding:7px 16px; border-radius:var(--radius-sm);
+    font-size:12px; font-weight:700; cursor:pointer; font-family:inherit;
+    transition:background 0.2s;
+  }
+  .btn-apply:hover { background:var(--navy-light); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px;
+  }
+  .testimonial-card {
+    background:#fff; border-radius:var(--radius); border:1px solid var(--gray-200); padding:24px;
+  }
+  .test-stars { color:var(--gold); font-size:14px; margin-bottom:10px; }
+  .test-text { font-size:14px; color:var(--gray-600); line-height:1.7; margin-bottom:16px; font-style:italic; }
+  .test-author { display:flex; align-items:center; gap:10px; }
+  .test-avatar {
+    width:40px; height:40px; border-radius:50%;
+    background:var(--navy); display:flex; align-items:center; justify-content:center;
+    font-size:16px; color:#fff; font-weight:800;
+  }
+  .test-name { font-size:14px; font-weight:800; color:var(--navy); }
+  .test-role { font-size:11px; color:var(--gray-400); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background:var(--navy-dark); color:#fff; padding:48px 20px 0;
+  }
+  .footer-grid {
+    max-width:1280px; margin:0 auto;
+    display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px;
+    padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand .logo-name { color:#fff; font-size:24px; margin-bottom:12px; display:block; }
+  .footer-brand p { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.7; margin-bottom:16px; }
+  .footer-social { display:flex; gap:10px; }
+  .social-btn {
+    width:36px; height:36px; border-radius:8px;
+    background:rgba(255,255,255,0.1); display:flex;
+    align-items:center; justify-content:center; font-size:14px;
+    color:rgba(255,255,255,0.7); text-decoration:none; transition:all 0.2s;
+  }
+  .social-btn:hover { background:var(--saffron); color:#fff; }
+  .footer-col h4 { font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; color:rgba(255,255,255,0.5); margin-bottom:16px; }
+  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .footer-col ul li a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:13px; transition:color 0.2s; }
+  .footer-col ul li a:hover { color:var(--saffron); }
+  .footer-newsletter { background:rgba(255,255,255,0.05); border-radius:var(--radius); padding:16px; margin-top:16px; }
+  .footer-newsletter input {
+    width:100%; padding:10px 12px; background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2); border-radius:var(--radius-sm);
+    color:#fff; font-family:inherit; font-size:13px; margin-bottom:8px; outline:none;
+  }
+  .footer-newsletter input::placeholder { color:rgba(255,255,255,0.4); }
+  .footer-newsletter button {
+    width:100%; background:var(--saffron); color:#fff; border:none;
+    padding:10px; border-radius:var(--radius-sm); font-family:inherit;
+    font-size:13px; font-weight:700; cursor:pointer; transition:background 0.2s;
+  }
+  .footer-newsletter button:hover { background:var(--saffron-dark); }
+  .footer-bottom {
+    max-width:1280px; margin:0 auto;
+    padding:20px 0;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12px; color:rgba(255,255,255,0.4); flex-wrap:wrap; gap:8px;
+  }
+  .footer-bottom a { color:rgba(255,255,255,0.4); text-decoration:none; }
+  .footer-bottom a:hover { color:var(--saffron); }
+
+  /* ── MOBILE BOTTOM NAV ── */
+  .mobile-nav {
+    display:none; position:fixed; bottom:0; left:0; right:0;
+    background:#fff; border-top:1px solid var(--gray-200);
+    z-index:999; padding:8px 0 calc(8px + env(safe-area-inset-bottom));
+  }
+  .mobile-nav-inner { display:flex; justify-content:space-around; }
+  .mob-nav-btn {
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    font-size:20px; color:var(--gray-400); text-decoration:none;
+    transition:color 0.2s;
+  }
+  .mob-nav-btn span { font-size:10px; font-weight:700; }
+  .mob-nav-btn.active { color:var(--saffron); }
+
+  /* ── FLOATING BUTTONS ── */
+  .floating-btns {
+    position:fixed; bottom:80px; right:20px;
+    display:flex; flex-direction:column; gap:10px; z-index:998;
+  }
+  .float-btn {
+    width:50px; height:50px; border-radius:50%;
+    border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; color:#fff; box-shadow:var(--shadow-lg);
+    transition:all 0.2s;
+  }
+  .float-btn:hover { transform:scale(1.1); }
+  .float-wa { background:#25D366; }
+  .float-top { background:var(--navy); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .animate-in { animation: fadeInUp 0.5s ease forwards; }
+  .delay-1 { animation-delay:0.1s; }
+  .delay-2 { animation-delay:0.2s; }
+  .delay-3 { animation-delay:0.3s; }
+
+  /* ── TABS ── */
+  .tab-nav {
+    display:flex; gap:4px; background:var(--gray-100);
+    border-radius:var(--radius-sm); padding:4px; margin-bottom:24px;
+    width:fit-content;
+  }
+  .tab-btn {
+    padding:8px 18px; border:none; border-radius:6px;
+    font-family:inherit; font-size:13px; font-weight:700;
+    cursor:pointer; transition:all 0.2s; background:transparent; color:var(--gray-600);
+  }
+  .tab-btn.active { background:#fff; color:var(--navy); box-shadow:var(--shadow-sm); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:1024px) {
+    .news-grid { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .hero-graphic { display:none; }
+  }
+  @media (max-width:768px) {
+    .nav-links, .nav-search { display:none; }
+    .hamburger { display:block; }
+    .emergency-bar .emg-right { display:none; }
+    .hero-carousel { height:280px; }
+    .hero-content { padding:0 24px; }
+    .hero-title { font-size:26px; }
+    .hero-sub { display:none; }
+    .footer-grid { grid-template-columns:1fr; gap:24px; }
+    .mobile-nav { display:block; }
+    .floating-btns { bottom:80px; }
+    .stats-bar { display:none; }
+    .ad-strip { flex-direction:column; text-align:center; }
+    .search-box select { display:none; }
+  }
+  @media (max-width:480px) {
+    .categories-grid { grid-template-columns:repeat(4,1fr); }
+    .pricing-grid { grid-template-columns:1fr; }
+    .section { padding:32px 16px; }
+    .hero-cta { flex-direction:column; }
+  }
+
+  /* Tag colors */
+  .tag-blue { background:#EFF6FF; color:#1D4ED8; }
+  .tag-green { background:#ECFDF5; color:#065F46; }
+  .tag-orange { background:#FFF7ED; color:#C2410C; }
+  .tag-purple { background:#F5F3FF; color:#6D28D9; }
+  .tag-red { background:#FEF2F2; color:#B91C1C; }
+  .tag-yellow { background:#FEFCE8; color:#854D0E; }
+  .bg-blue { background:#EFF6FF; }
+  .bg-green { background:#ECFDF5; }
+  .bg-orange { background:#FFF7ED; }
+  .bg-purple { background:#F5F3FF; }
+  .bg-red { background:#FEF2F2; }
+  .bg-yellow { background:#FEFCE8; }
+  .bg-teal { background:#F0FDFA; }
+  .tc-blue { color:#2563EB; }
+  .tc-green { color:#059669; }
+  .tc-orange { color:#EA580C; }
+  .tc-purple { color:#7C3AED; }
+  .tc-red { color:#DC2626; }
+  .tc-teal { color:#0D9488; }
+</style>
+</head>
+<body>
+
+<!-- EMERGENCY BAR -->
+<div class="emergency-bar">
+  <div class="emg-left">
+    <div class="emg-item"><i class="fas fa-phone-alt"></i> Police: <a href="tel:100">100</a></div>
+    <div class="emg-item"><i class="fas fa-ambulance"></i> Ambulance: <a href="tel:108">108</a></div>
+    <div class="emg-item"><i class="fas fa-fire-extinguisher"></i> Fire: <a href="tel:101">101</a></div>
+    <div class="emg-item"><i class="fas fa-map-marker-alt" style="color:var(--saffron)"></i> Dildarnagar, Ghazipur, UP</div>
+  </div>
+  <div class="emg-right">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-main">
+    <a href="#" class="logo">
+      <span class="logo-name">Dildar<span>nagar</span>.in</span>
+      <span class="logo-tagline">आपका अपना शहर का पोर्टल</span>
+    </a>
+    <div class="nav-search">
+      <input type="text" placeholder="Search businesses, services, news...">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    <div class="nav-links">
+      <a href="#categories" class="active">Listings</a>
+      <a href="#services">Services</a>
+      <a href="#news">News</a>
+      <a href="#events">Events</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#" id="nav-login-btn">Login</a>
+      <a href="#" id="nav-register-btn" class="btn-nav">Register</a>
+      <a href="dashboard.html" id="nav-dashboard-btn" style="display:none;" class="btn-nav">Dashboard</a>
+      <a href="#pricing" class="btn-nav">+ Add Listing</a>
+    </div>
+    <button class="hamburger"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- BREAKING NEWS TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <div class="ticker-label"><i class="fas fa-circle"></i> Breaking</div>
+    <div class="ticker-content">
+      <div class="ticker-track">
+        <span class="ticker-item">नई रोड निर्माण योजना: दिलदारनगर-गाजीपुर मार्ग का होगा चौड़ीकरण</span>
+        <span class="ticker-item">Local election results: Ward 7 councillor announced — Congratulations!</span>
+        <span class="ticker-item">दिलदारनगर बाजार में आयोजित होगा विशाल व्यापार मेला — 15 मार्च से</span>
+        <span class="ticker-item">New government hospital OPD timings updated — Now open 8AM to 6PM</span>
+        <span class="ticker-item">पंचायत चुनाव 2025: मतदाता सूची में नाम जोड़ें — अंतिम तिथि 28 फरवरी</span>
+        <span class="ticker-item">Dildarnagar.in now has 500+ verified business listings — Grow with us!</span>
+        <span class="ticker-item">शहर में लगेगा रक्तदान शिविर — जिला अस्पताल परिसर, 20 मार्च</span>
+        <span class="ticker-item">New coaching centers directory launched — Find top tutors near you</span>
+        <span class="ticker-item">नई रोड निर्माण योजना: दिलदारनगर-गाजीपुर मार्ग का होगा चौड़ीकरण</span>
+        <span class="ticker-item">Local election results: Ward 7 councillor announced — Congratulations!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO BANNER CAROUSEL -->
+<div class="hero-section">
+  <div class="hero-carousel" id="heroCarousel">
+    <!-- Slide 1 -->
+    <div class="hero-slide hero-slide-1 active">
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-star"></i> Dildarnagar's #1 Portal</div>
+        <h1 class="hero-title">Discover the Best of<br><span>दिलदारनगर</span> Here</h1>
+        <p class="hero-sub">Find local businesses, services, news & connect with your community — all in one place.</p>
+        <div class="hero-cta">
+          <button class="btn-hero-primary" onclick="document.getElementById('categories').scrollIntoView()"><i class="fas fa-search"></i> Explore Listings</button>
+          <button class="btn-hero-outline" onclick="document.getElementById('pricing').scrollIntoView()"><i class="fas fa-plus"></i> Add Your Business</button>
+        </div>
+      </div>
+      <div class="hero-graphic">
+        <div class="hero-graphic-circle">🏙️</div>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="hero-slide hero-slide-2">
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-bullhorn"></i> Advertise With Us</div>
+        <h1 class="hero-title">Reach <span>50,000+</span><br>Local Customers</h1>
+        <p class="hero-sub">Premium banner ads, featured listings & sponsored posts to grow your local business fast.</p>
+        <div class="hero-cta">
+          <button class="btn-hero-primary" onclick="document.getElementById('pricing').scrollIntoView()"><i class="fas fa-rocket"></i> View Ad Plans</button>
+          <button class="btn-hero-outline"><i class="fas fa-phone"></i> Call Us Now</button>
+        </div>
+      </div>
+      <div class="hero-graphic">
+        <div class="hero-graphic-circle">📢</div>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="hero-slide hero-slide-3">
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-newspaper"></i> Latest Local News</div>
+        <h1 class="hero-title">Your City,<br><span>Your News</span> — Daily</h1>
+        <p class="hero-sub">Hyperlocal news from Dildarnagar & Ghazipur district — politics, development, events & more.</p>
+        <div class="hero-cta">
+          <button class="btn-hero-primary" onclick="document.getElementById('news').scrollIntoView()"><i class="fas fa-newspaper"></i> Read Today's News</button>
+          <button class="btn-hero-outline"><i class="fas fa-bell"></i> Get Alerts</button>
+        </div>
+      </div>
+      <div class="hero-graphic">
+        <div class="hero-graphic-circle">📰</div>
+      </div>
+    </div>
+    <!-- Slide 4 -->
+    <div class="hero-slide hero-slide-4">
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-briefcase"></i> Jobs & Classifieds</div>
+        <h1 class="hero-title">Find Jobs &<br><span>Local Deals</span> Near You</h1>
+        <p class="hero-sub">100+ local job openings, property listings, buy-sell ads and more posted every week.</p>
+        <div class="hero-cta">
+          <button class="btn-hero-primary" onclick="document.getElementById('jobs').scrollIntoView()"><i class="fas fa-briefcase"></i> Browse Jobs</button>
+          <button class="btn-hero-outline"><i class="fas fa-tag"></i> Post Free Ad</button>
+        </div>
+      </div>
+      <div class="hero-graphic">
+        <div class="hero-graphic-circle">💼</div>
+      </div>
+    </div>
+    <button class="hero-nav-btn hero-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="hero-nav-btn hero-next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="hero-indicators">
+      <div class="hero-dot active" onclick="goToSlide(0)"></div>
+      <div class="hero-dot" onclick="goToSlide(1)"></div>
+      <div class="hero-dot" onclick="goToSlide(2)"></div>
+      <div class="hero-dot" onclick="goToSlide(3)"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-icon">🏢</div>
+      <div><div class="stat-num">540+</div><div class="stat-label">Business Listings</div></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">✅</div>
+      <div><div class="stat-num">320</div><div class="stat-label">Verified</div></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">📰</div>
+      <div><div class="stat-num">1,200+</div><div class="stat-label">News Articles</div></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">👥</div>
+      <div><div class="stat-num">25,000+</div><div class="stat-label">Monthly Visitors</div></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">⭐</div>
+      <div><div class="stat-num">4.6/5</div><div class="stat-label">Avg. Rating</div></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">💼</div>
+      <div><div class="stat-num">180+</div><div class="stat-label">Jobs Posted</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN SEARCH -->
+<div class="main-search-section">
+  <div class="main-search-inner">
+    <h2>What are you <span>looking for?</span></h2>
+    <p>🔍 Search from 540+ businesses and services in Dildarnagar</p>
+    
+    <!-- Enhanced Search Controls -->
+    <div style="background: white; border-radius: 12px; padding: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); margin-bottom: 20px;">
+      <!-- Content Type & Search Row -->
+      <div style="display: flex; gap: 10px; margin-bottom: 12px; align-items: center; flex-wrap: wrap;">
+        <select id="content-type-select" style="padding: 10px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-weight: 600; cursor: pointer; background: white; color: var(--navy); font-size: 13px; min-width: 130px; transition: all 0.3s; font-family: inherit;">
+          <option value="listings" selected>All Listings</option>
+          <option value="services">🔧 Services</option>
+          <option value="news">📰 News</option>
+          <option value="events">📅 Events</option>
+          <option value="jobs">💼 Jobs</option>
+        </select>
+        
+        <input type="text" id="global-search-input" placeholder="What do you need?" 
+          style="flex: 1; min-width: 200px; padding: 10px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: white; transition: all 0.3s; font-family: inherit;" 
+          onfocus="this.style.borderColor='#C45500'" 
+          onblur="this.style.borderColor='#e5e7eb'">
+        
+        <button id="search-button" style="padding: 10px 26px; background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(232, 104, 10, 0.25); font-family: inherit;">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+
+      <!-- Category Chips -->
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+        <div id="category-filter-chips" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; width: 100%;">
+          <!-- Category chips will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Search Tags -->
+    <div class="search-tags" style="margin-bottom: 0;">
+      <a href="#" class="search-tag" onclick="setQuickSearch('restaurants'); return false;">🍽️ Restaurants</a>
+      <a href="#" class="search-tag" onclick="setQuickSearch('hospitals'); return false;">🏥 Hospitals</a>
+      <a href="#" class="search-tag" onclick="setQuickSearch('plumber'); return false;">🔧 Plumber</a>
+      <a href="#" class="search-tag" onclick="setQuickSearch('electrician'); return false;">⚡ Electrician</a>
+      <a href="#" class="search-tag" onclick="setQuickSearch('jobs'); return false;">💼 Jobs</a>
+      <a href="#" class="search-tag" onclick="setQuickSearch('news'); return false;">📰 News</a>
+      <a href="#" class="search-tag" onclick="setQuickSearch('events'); return false;">📅 Events</a>
+    </div>
+
+    <!-- Search Results Section -->
+    <div id="search-results" style="margin-top: 24px; min-height: 0;">
+      <!-- Results will be displayed here when user searches -->
+    </div>
+  </div>
+</div>
+
+<script>
+// Quick search tag handler
+function setQuickSearch(type) {
+  const typeMap = {
+    'restaurants': 'listings',
+    'hospitals': 'listings',
+    'plumber': 'services',
+    'electrician': 'services',
+    'jobs': 'jobs',
+    'news': 'news',
+    'events': 'events'
+  };
+  
+  const categoryMap = {
+    'plumber': 'Plumber',
+    'electrician': 'Electrician'
+  };
+  
+  const contentType = typeMap[type] || 'listings';
+  const searchTerm = categoryMap[type] || (type.charAt(0).toUpperCase() + type.slice(1));
+  
+  if (document.getElementById('content-type-select')) {
+    document.getElementById('content-type-select').value = contentType;
+  }
+  if (document.getElementById('global-search-input')) {
+    document.getElementById('global-search-input').value = searchTerm;
+  }
+  
+  if (currentFilters) {
+    currentFilters.contentType = contentType;
+    currentFilters.search = searchTerm;
+    if (contentType === 'services' && categoryMap[type]) {
+      currentFilters.category = categoryMap[type];
+    }
+  }
+  
+  if (typeof setupCategoryFilters === 'function') {
+    setupCategoryFilters();
+  }
+  
+  if (typeof performSearch === 'function') {
+    performSearch();
+    // Scroll to results
+    setTimeout(() => {
+      document.getElementById('search-results')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+  
+  return false;
+}
+</script>
+
+<!-- CATEGORIES SECTION -->
+<section class="section section-alt" id="categories">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Browse by <span>Category</span></div>
+        <div class="section-subtitle">Explore all business categories in Dildarnagar</div>
+      </div>
+      <a href="#" class="section-link">View All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="categories-grid">
+      <a href="#" class="cat-card"><span class="cat-icon">🏥</span><div class="cat-name">Hospitals</div><div class="cat-count">12 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🍽️</span><div class="cat-name">Restaurants</div><div class="cat-count">34 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🏨</span><div class="cat-name">Hotels</div><div class="cat-count">8 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">📚</span><div class="cat-name">Schools</div><div class="cat-count">22 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🏦</span><div class="cat-name">Banks & ATM</div><div class="cat-count">15 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🚗</span><div class="cat-name">Transport</div><div class="cat-count">18 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🛒</span><div class="cat-name">Grocery</div><div class="cat-count">46 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">⚡</span><div class="cat-name">Electrician</div><div class="cat-count">14 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🔧</span><div class="cat-name">Plumbers</div><div class="cat-count">9 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">💊</span><div class="cat-name">Pharmacy</div><div class="cat-count">20 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🏛️</span><div class="cat-name">Govt Offices</div><div class="cat-count">11 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🕌</span><div class="cat-name">Temples</div><div class="cat-count">18 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">💇</span><div class="cat-name">Salons</div><div class="cat-count">16 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">📱</span><div class="cat-name">Mobile Shop</div><div class="cat-count">23 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">👗</span><div class="cat-name">Clothing</div><div class="cat-count">39 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🏗️</span><div class="cat-name">Hardware</div><div class="cat-count">12 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">📐</span><div class="cat-name">Coaching</div><div class="cat-count">28 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">⚖️</span><div class="cat-name">Lawyers</div><div class="cat-count">7 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🔑</span><div class="cat-name">Real Estate</div><div class="cat-count">15 listings</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🎉</span><div class="cat-name">Events</div><div class="cat-count">6 listings</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED LISTINGS -->
+<section class="section" id="listings">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">⭐ Featured <span>Listings</span></div>
+        <div class="section-subtitle">Top-rated and verified businesses in Dildarnagar</div>
+      </div>
+      <a href="#" class="section-link">All Listings <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="setTab(this,'all')">All</button>
+      <button class="tab-btn" onclick="setTab(this,'health')">Health</button>
+      <button class="tab-btn" onclick="setTab(this,'food')">Food & Dining</button>
+      <button class="tab-btn" onclick="setTab(this,'edu')">Education</button>
+      <button class="tab-btn" onclick="setTab(this,'shop')">Shopping</button>
+    </div>
+    <div class="listings-grid" id="listings-container">
+      <div style="grid-column:1/-1; padding:40px; text-align:center; color:#666;">
+        <div style="margin-bottom:16px;">⏳ Loading listings...</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:28px;">
+      <button class="btn-hero-primary" style="background:var(--navy);"><i class="fas fa-th-large"></i> View All 540+ Listings</button>
+    </div>
+  </div>
+</section>
+
+<!-- AD STRIP -->
+<div class="container" style="padding:0 20px;">
+  <div class="ad-strip">
+    <div class="ad-strip-content">
+      <div class="ad-strip-label">📢 Advertise With Us</div>
+      <div class="ad-strip-title">Grow Your Business in <span>Dildarnagar</span></div>
+      <div class="ad-strip-sub">50,000+ monthly visitors | Start from just ₹299/month | Setup in 24 hrs</div>
+    </div>
+    <button class="ad-strip-cta" onclick="document.getElementById('pricing').scrollIntoView()">Get Started Today →</button>
+  </div>
+</div>
+
+<!-- LOCAL SERVICES -->
+<section class="section section-alt" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Local <span>Services</span></div>
+        <div class="section-subtitle">On-demand services at your doorstep</div>
+      </div>
+      <a href="#" class="section-link">View All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="services-grid">
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-red"><span>🔧</span></div>
+        <div class="service-name">Plumber</div>
+        <div class="service-count">9 providers</div>
+        <span class="service-tag tag-red">₹200–₹800</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-yellow"><span>⚡</span></div>
+        <div class="service-name">Electrician</div>
+        <div class="service-count">14 providers</div>
+        <span class="service-tag tag-yellow">₹150–₹600</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-orange"><span>🚗</span></div>
+        <div class="service-name">Auto / Taxi</div>
+        <div class="service-count">28 drivers</div>
+        <span class="service-tag tag-orange">₹30/km</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-green"><span>🍱</span></div>
+        <div class="service-name">Tiffin Service</div>
+        <div class="service-count">6 providers</div>
+        <span class="service-tag tag-green">₹80–₹150/meal</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-blue"><span>👨‍⚕️</span></div>
+        <div class="service-name">Doctor Visit</div>
+        <div class="service-count">18 doctors</div>
+        <span class="service-tag tag-blue">₹200–₹500</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-purple"><span>📚</span></div>
+        <div class="service-name">Home Tuition</div>
+        <div class="service-count">34 tutors</div>
+        <span class="service-tag tag-purple">₹500–₹2000/mo</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-teal"><span>💇</span></div>
+        <div class="service-name">Home Salon</div>
+        <div class="service-count">7 providers</div>
+        <span class="service-tag" style="background:#F0FDFA;color:#0D9488">₹100–₹400</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-orange"><span>🏠</span></div>
+        <div class="service-name">Carpenter</div>
+        <div class="service-count">11 providers</div>
+        <span class="service-tag tag-orange">₹300–₹1000</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-green"><span>🌱</span></div>
+        <div class="service-name">Pest Control</div>
+        <div class="service-count">4 providers</div>
+        <span class="service-tag tag-green">₹500–₹1500</span>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-icon-wrap bg-blue"><span>💼</span></div>
+        <div class="service-name">CA / Accountant</div>
+        <div class="service-count">8 professionals</div>
+        <span class="service-tag tag-blue">₹500–₹5000</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL NEWS -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">📰 Local <span>News</span></div>
+        <div class="section-subtitle">Hyperlocal news from Dildarnagar & Ghazipur district</div>
+      </div>
+      <a href="#" class="section-link">All News <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="news-grid">
+      <div class="news-main">
+        <div class="news-featured" id="news-featured">
+          <div class="news-feat-img">
+            🏗️
+            <div class="news-feat-overlay">
+              <span class="news-cat-tag" style="background:var(--saffron);color:#fff;">Development</span>
+              <div class="news-feat-title">दिलदारनगर-गाजीपुर फोर-लेन हाईवे का काम शुरू, 18 महीनों में होगा पूरा</div>
+            </div>
+          </div>
+          <div class="news-feat-body">
+            <div class="news-meta">
+              <span><i class="fas fa-calendar"></i> March 3, 2025</span>
+              <span><i class="fas fa-user"></i> DD Reporter</span>
+              <span><i class="fas fa-eye"></i> 4,230 views</span>
+            </div>
+            <div class="news-excerpt">UP PWD department has officially started construction work on the Dildarnagar-Ghazipur four-lane highway project worth ₹340 crore. The project will reduce travel time by 40% and benefit over 2 lakh residents of the region...</div>
+          </div>
+        </div>
+        <div class="news-list" id="news-list">
+          <div class="news-item">
+            <div class="news-item-icon">🏥</div>
+            <div>
+              <div class="news-item-title">जिला अस्पताल में नई ICU यूनिट का उद्घाटन, 20 बेड की सुविधा शुरू</div>
+              <div class="news-item-meta"><span class="news-cat-tag" style="background:#EFF6FF;color:#1D4ED8;font-size:10px;padding:2px 6px;border-radius:3px;">Health</span> &nbsp; March 2, 2025 &nbsp;·&nbsp; 1,820 views</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <div class="news-item-icon">📊</div>
+            <div>
+              <div class="news-item-title">Dildarnagar Mela 2025: व्यापार मेले में इस बार होंगे 300 से अधिक स्टॉल</div>
+              <div class="news-item-meta"><span class="news-cat-tag" style="background:#ECFDF5;color:#065F46;font-size:10px;padding:2px 6px;border-radius:3px;">Business</span> &nbsp; March 1, 2025 &nbsp;·&nbsp; 3,100 views</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <div class="news-item-icon">🏫</div>
+            <div>
+              <div class="news-item-title">सरकारी स्कूलों में अब स्मार्ट क्लासरूम: 12 विद्यालयों में लगेंगे LED प्रोजेक्टर</div>
+              <div class="news-item-meta"><span class="news-cat-tag" style="background:#F5F3FF;color:#6D28D9;font-size:10px;padding:2px 6px;border-radius:3px;">Education</span> &nbsp; Feb 28, 2025 &nbsp;·&nbsp; 2,450 views</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="news-sidebar">
+        <div class="news-sidebar-card">
+          <div class="sidebar-header"><i class="fas fa-fire"></i> Trending Today</div>
+          <div class="sidebar-body">
+            <div class="sidebar-news-item">
+              <div class="sidebar-news-num">1</div>
+              <div><div class="sidebar-news-title">नई बस सेवा: दिलदारनगर से लखनऊ सीधी AC बस शुरू</div><div class="sidebar-news-time">2 hrs ago · 5.2K views</div></div>
+            </div>
+            <div class="sidebar-news-item">
+              <div class="sidebar-news-num">2</div>
+              <div><div class="sidebar-news-title">बिजली कटौती: 3 दिनों तक 6 घंटे पावर कट का शेड्यूल जारी</div><div class="sidebar-news-time">4 hrs ago · 4.8K views</div></div>
+            </div>
+            <div class="sidebar-news-item">
+              <div class="sidebar-news-num">3</div>
+              <div><div class="sidebar-news-title">पुलिस ने गिरफ्तार किया ऑनलाइन ठगी गिरोह का सरगना</div><div class="sidebar-news-time">6 hrs ago · 3.9K views</div></div>
+            </div>
+            <div class="sidebar-news-item">
+              <div class="sidebar-news-num">4</div>
+              <div><div class="sidebar-news-title">रबी फसल: किसानों को मिलेगा MSP पर गेहूं खरीद का लाभ</div><div class="sidebar-news-time">Yesterday · 2.7K views</div></div>
+            </div>
+            <div class="sidebar-news-item">
+              <div class="sidebar-news-num">5</div>
+              <div><div class="sidebar-news-title">नगर पंचायत का बजट ₹18 करोड़: सड़क-नाली पर होगा मुख्य खर्च</div><div class="sidebar-news-time">Yesterday · 2.1K views</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="news-sidebar-card">
+          <div class="sidebar-header"><i class="fas fa-tags"></i> News Categories</div>
+          <div class="sidebar-body" style="display:flex;flex-wrap:wrap;gap:8px;padding:16px;">
+            <span class="service-tag tag-orange" style="cursor:pointer">🏗️ Development</span>
+            <span class="service-tag tag-blue" style="cursor:pointer">🏥 Health</span>
+            <span class="service-tag tag-purple" style="cursor:pointer">📚 Education</span>
+            <span class="service-tag tag-green" style="cursor:pointer">🌾 Agriculture</span>
+            <span class="service-tag tag-red" style="cursor:pointer">⚖️ Crime</span>
+            <span class="service-tag tag-yellow" style="cursor:pointer">🏅 Sports</span>
+            <span class="service-tag" style="background:#F0FDFA;color:#0D9488;cursor:pointer">🎉 Events</span>
+            <span class="service-tag tag-blue" style="cursor:pointer">🗳️ Politics</span>
+          </div>
+        </div>
+        <!-- Sidebar Ad -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:var(--radius);padding:20px;text-align:center;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-bottom:8px;">ADVERTISEMENT</div>
+          <div style="font-size:28px;margin-bottom:8px;">🎯</div>
+          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:6px;">Your Ad Here</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:14px;">Sidebar banner • ₹799/month</div>
+          <button class="btn-price btn-price-filled" onclick="document.getElementById('pricing').scrollIntoView()" style="font-size:12px;padding:8px;">Book This Slot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS & ANNOUNCEMENTS -->
+<section class="section section-alt" id="events">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">🗓️ Events & <span>Announcements</span></div>
+        <div class="section-subtitle">Upcoming events, melas & government notices</div>
+      </div>
+      <a href="#" class="section-link">All Events <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="events-grid" id="events-grid">
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">15</div><div class="event-month">Mar</div></div>
+        <div>
+          <div class="event-title">दिलदारनगर व्यापार मेला 2025</div>
+          <div class="event-place"><i class="fas fa-map-marker-alt"></i> Mela Ground, Main Road</div>
+          <span class="event-tag tag-orange">Business</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">20</div><div class="event-month">Mar</div></div>
+        <div>
+          <div class="event-title">Free Blood Donation Camp — जिला चिकित्सालय</div>
+          <div class="event-place"><i class="fas fa-map-marker-alt"></i> District Hospital Campus</div>
+          <span class="event-tag tag-red">Health</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">25</div><div class="event-month">Mar</div></div>
+        <div>
+          <div class="event-title">किसान सम्मेलन: MSP और बीमा योजना</div>
+          <div class="event-place"><i class="fas fa-map-marker-alt"></i> Panchayat Bhavan</div>
+          <span class="event-tag tag-green">Agriculture</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">01</div><div class="event-month">Apr</div></div>
+        <div>
+          <div class="event-title">Holi Milan Samaroh 2025 — सामूहिक होली उत्सव</div>
+          <div class="event-place"><i class="fas fa-map-marker-alt"></i> Town Hall, Dildarnagar</div>
+          <span class="event-tag tag-purple">Festival</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">05</div><div class="event-month">Apr</div></div>
+        <div>
+          <div class="event-title">District Cricket Tournament — Registration Open</div>
+          <div class="event-place"><i class="fas fa-map-marker-alt"></i> Sports Ground, Ghazipur</div>
+          <span class="event-tag tag-blue">Sports</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">10</div><div class="event-month">Apr</div></div>
+        <div>
+          <div class="event-title">नि:शुल्क कानूनी सहायता शिविर — जिला न्यायालय</div>
+          <div class="event-place"><i class="fas fa-map-marker-alt"></i> District Court Campus</div>
+          <span class="event-tag tag-yellow">Legal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY PANEL -->
+<section class="section">
+  <div class="container">
+    <div class="emergency-panel">
+      <div class="emg-panel-title"><i class="fas fa-exclamation-triangle"></i> Emergency Contacts — Dildarnagar</div>
+      <div class="emg-panel-sub">Quick access to emergency numbers. Save these in your phone!</div>
+      <div class="emg-contacts-grid">
+        <div class="emg-contact" onclick="window.location='tel:100'">
+          <div class="emg-contact-icon">👮</div>
+          <div class="emg-contact-name">Police</div>
+          <div class="emg-contact-num">100</div>
+        </div>
+        <div class="emg-contact" onclick="window.location='tel:108'">
+          <div class="emg-contact-icon">🚑</div>
+          <div class="emg-contact-name">Ambulance</div>
+          <div class="emg-contact-num">108</div>
+        </div>
+        <div class="emg-contact" onclick="window.location='tel:101'">
+          <div class="emg-contact-icon">🚒</div>
+          <div class="emg-contact-name">Fire Brigade</div>
+          <div class="emg-contact-num">101</div>
+        </div>
+        <div class="emg-contact" onclick="window.location='tel:1800111311'">
+          <div class="emg-contact-icon">💊</div>
+          <div class="emg-contact-name">Poison Helpline</div>
+          <div class="emg-contact-num">1800-111-311</div>
+        </div>
+        <div class="emg-contact" onclick="window.location='tel:181'">
+          <div class="emg-contact-icon">👩</div>
+          <div class="emg-contact-name">Women Helpline</div>
+          <div class="emg-contact-num">181</div>
+        </div>
+        <div class="emg-contact" onclick="window.location='tel:1098'">
+          <div class="emg-contact-icon">🧒</div>
+          <div class="emg-contact-name">Child Helpline</div>
+          <div class="emg-contact-num">1098</div>
+        </div>
+        <div class="emg-contact" onclick="window.location='tel:1912'">
+          <div class="emg-contact-icon">💡</div>
+          <div class="emg-contact-name">Power (UPPCL)</div>
+          <div class="emg-contact-num">1912</div>
+        </div>
+        <div class="emg-contact" onclick="window.location='tel:18001800115'">
+          <div class="emg-contact-icon">🌊</div>
+          <div class="emg-contact-name">Flood Relief</div>
+          <div class="emg-contact-num">1800-1800-115</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="section-title">💳 Membership & <span>Subscription</span> Plans</div>
+      <p style="font-size:15px; color:var(--gray-400); margin-top:8px;">List your business and reach thousands of local customers</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- FREE -->
+      <div class="price-card">
+        <div class="price-plan">Basic</div>
+        <div class="price-name">Free Forever</div>
+        <div class="price-amount"><span class="price-currency">₹</span><span class="price-number">0</span><span class="price-per">/year</span></div>
+        <div class="price-desc">Get your business discovered for free</div>
+        <ul class="price-features">
+          <li class="has"><i class="fas fa-check-circle"></i> 1 Business Listing</li>
+          <li class="has"><i class="fas fa-check-circle"></i> 1 Profile Photo</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Phone Number Visible</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Basic Category Placement</li>
+          <li class="no"><i class="fas fa-times-circle"></i> WhatsApp Button</li>
+          <li class="no"><i class="fas fa-times-circle"></i> Priority Placement</li>
+          <li class="no"><i class="fas fa-times-circle"></i> Banner Ads</li>
+          <li class="no"><i class="fas fa-times-circle"></i> Analytics Dashboard</li>
+        </ul>
+        <button class="btn-price btn-price-outline">Get Started Free</button>
+      </div>
+      <!-- STANDARD -->
+      <div class="price-card popular">
+        <div class="popular-badge">🔥 Most Popular</div>
+        <div class="price-plan">Standard</div>
+        <div class="price-name">Business Pro</div>
+        <div class="price-amount"><span class="price-currency">₹</span><span class="price-number">999</span><span class="price-per">/year</span></div>
+        <div class="price-desc">Everything you need to grow locally</div>
+        <ul class="price-features">
+          <li class="has"><i class="fas fa-check-circle"></i> 3 Business Listings</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Up to 5 Photos</li>
+          <li class="has"><i class="fas fa-check-circle"></i> WhatsApp Button</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Priority Search Placement</li>
+          <li class="has"><i class="fas fa-check-circle"></i> ✅ Verified Badge</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Google Maps Embed</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Basic Analytics</li>
+          <li class="no"><i class="fas fa-times-circle"></i> Banner Ad Slot</li>
+        </ul>
+        <button class="btn-price btn-price-filled">Start for ₹999/yr</button>
+      </div>
+      <!-- PREMIUM -->
+      <div class="price-card">
+        <div class="price-plan">Premium</div>
+        <div class="price-name">Business Elite</div>
+        <div class="price-amount"><span class="price-currency">₹</span><span class="price-number">2,499</span><span class="price-per">/year</span></div>
+        <div class="price-desc">Maximum visibility and leads</div>
+        <ul class="price-features">
+          <li class="has"><i class="fas fa-check-circle"></i> Unlimited Listings</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Unlimited Photos & Videos</li>
+          <li class="has"><i class="fas fa-check-circle"></i> WhatsApp & Direct Call</li>
+          <li class="has"><i class="fas fa-check-circle"></i> ⭐ Featured Badge + Top Rank</li>
+          <li class="has"><i class="fas fa-check-circle"></i> 1 Banner Ad Slot/month</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Full Analytics + Leads</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Owner Reply to Reviews</li>
+          <li class="has"><i class="fas fa-check-circle"></i> Social Media Promotion</li>
+        </ul>
+        <button class="btn-price btn-price-outline" style="border-color:var(--saffron);color:var(--saffron);">Go Premium →</button>
+      </div>
+    </div>
+
+    <!-- Advertisement Plans -->
+    <div style="margin-top:48px;">
+      <div style="text-align:center; margin-bottom:28px;">
+        <div class="section-title" style="font-size:20px;">📢 Advertisement <span>Packages</span></div>
+        <p style="font-size:13px; color:var(--gray-400); margin-top:6px;">Reach your target audience with premium ad placements</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;">
+        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;text-align:center;">
+          <div style="font-size:32px;margin-bottom:10px;">🎞️</div>
+          <div style="font-weight:800;color:var(--navy);margin-bottom:4px;">Hero Banner Ad</div>
+          <div style="font-size:24px;font-weight:800;color:var(--saffron);margin-bottom:4px;">₹1,499<span style="font-size:13px;font-weight:400;color:var(--gray-400)">/month</span></div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:14px;">Full-width homepage carousel banner</div>
+          <button class="btn-price btn-price-filled" style="font-size:12px;padding:8px;">Book Now</button>
+        </div>
+        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;text-align:center;">
+          <div style="font-size:32px;margin-bottom:10px;">📌</div>
+          <div style="font-weight:800;color:var(--navy);margin-bottom:4px;">Sidebar Banner</div>
+          <div style="font-size:24px;font-weight:800;color:var(--saffron);margin-bottom:4px;">₹799<span style="font-size:13px;font-weight:400;color:var(--gray-400)">/month</span></div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:14px;">Sticky sidebar on all listing pages</div>
+          <button class="btn-price btn-price-filled" style="font-size:12px;padding:8px;">Book Now</button>
+        </div>
+        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;text-align:center;">
+          <div style="font-size:32px;margin-bottom:10px;">📜</div>
+          <div style="font-weight:800;color:var(--navy);margin-bottom:4px;">Ticker Text Ad</div>
+          <div style="font-size:24px;font-weight:800;color:var(--saffron);margin-bottom:4px;">₹299<span style="font-size:13px;font-weight:400;color:var(--gray-400)">/month</span></div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:14px;">Scrolling announcement on top ticker</div>
+          <button class="btn-price btn-price-filled" style="font-size:12px;padding:8px;">Book Now</button>
+        </div>
+        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;text-align:center;">
+          <div style="font-size:32px;margin-bottom:10px;">🚀</div>
+          <div style="font-weight:800;color:var(--navy);margin-bottom:4px;">Sponsored Listing</div>
+          <div style="font-size:24px;font-weight:800;color:var(--saffron);margin-bottom:4px;">₹499<span style="font-size:13px;font-weight:400;color:var(--gray-400)">/month</span></div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:14px;">Native sponsored card in search results</div>
+          <button class="btn-price btn-price-filled" style="font-size:12px;padding:8px;">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS BOARD -->
+<section class="section" id="jobs">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">💼 Local <span>Jobs Board</span></div>
+        <div class="section-subtitle">Find jobs & opportunities in Dildarnagar area</div>
+      </div>
+      <a href="#" class="section-link">All Jobs <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="jobs-grid" id="jobs-grid">
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Shri Ram Hospital</div>
+            <div class="job-title">Staff Nurse (Female)</div>
+          </div>
+          <span class="job-type full-time">Full Time</span>
+        </div>
+        <div class="job-details">
+          <span class="job-detail"><i class="fas fa-map-marker-alt"></i> Dildarnagar</span>
+          <span class="job-detail"><i class="fas fa-graduation-cap"></i> B.Sc Nursing</span>
+          <span class="job-detail"><i class="fas fa-clock"></i> 2 yrs exp</span>
+        </div>
+        <div class="job-footer">
+          <span class="job-salary">₹15,000–₹22,000/mo</span>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Dildarnagar.in Portal</div>
+            <div class="job-title">Field Sales Executive</div>
+          </div>
+          <span class="job-type full-time">Full Time</span>
+        </div>
+        <div class="job-details">
+          <span class="job-detail"><i class="fas fa-map-marker-alt"></i> Dildarnagar</span>
+          <span class="job-detail"><i class="fas fa-graduation-cap"></i> 12th Pass</span>
+          <span class="job-detail"><i class="fas fa-clock"></i> Fresher OK</span>
+        </div>
+        <div class="job-footer">
+          <span class="job-salary">₹8,000 + Commission</span>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Saraswati Vidya Mandir</div>
+            <div class="job-title">Science Teacher (TGT)</div>
+          </div>
+          <span class="job-type full-time">Full Time</span>
+        </div>
+        <div class="job-details">
+          <span class="job-detail"><i class="fas fa-map-marker-alt"></i> Dildarnagar</span>
+          <span class="job-detail"><i class="fas fa-graduation-cap"></i> B.Sc + B.Ed</span>
+          <span class="job-detail"><i class="fas fa-clock"></i> 1 yr exp</span>
+        </div>
+        <div class="job-footer">
+          <span class="job-salary">₹18,000–₹25,000/mo</span>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Local Grocery Chain</div>
+            <div class="job-title">Delivery Boy / Rider</div>
+          </div>
+          <span class="job-type part-time">Part Time</span>
+        </div>
+        <div class="job-details">
+          <span class="job-detail"><i class="fas fa-map-marker-alt"></i> Dildarnagar</span>
+          <span class="job-detail"><i class="fas fa-graduation-cap"></i> 10th Pass</span>
+          <span class="job-detail"><i class="fas fa-motorcycle"></i> Own Bike</span>
+        </div>
+        <div class="job-footer">
+          <span class="job-salary">₹6,000 + Tips</span>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">Arogya Medical Store</div>
+            <div class="job-title">Pharmacy Assistant</div>
+          </div>
+          <span class="job-type full-time">Full Time</span>
+        </div>
+        <div class="job-details">
+          <span class="job-detail"><i class="fas fa-map-marker-alt"></i> Dildarnagar</span>
+          <span class="job-detail"><i class="fas fa-graduation-cap"></i> D.Pharma</span>
+          <span class="job-detail"><i class="fas fa-clock"></i> Fresher OK</span>
+        </div>
+        <div class="job-footer">
+          <span class="job-salary">₹10,000–₹15,000/mo</span>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-company">UP Cooperative Bank</div>
+            <div class="job-title">Bank Clerk / Cashier</div>
+          </div>
+          <span class="job-type full-time">Full Time</span>
+        </div>
+        <div class="job-details">
+          <span class="job-detail"><i class="fas fa-map-marker-alt"></i> Ghazipur dist.</span>
+          <span class="job-detail"><i class="fas fa-graduation-cap"></i> Graduate</span>
+          <span class="job-detail"><i class="fas fa-clock"></i> 0–2 yrs</span>
+        </div>
+        <div class="job-footer">
+          <span class="job-salary">₹20,000–₹28,000/mo</span>
+          <button class="btn-apply">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSIFIEDS STRIP -->
+<div class="container" style="padding:0 20px;">
+  <div style="background:linear-gradient(135deg,#065F46,#059669);border-radius:var(--radius-lg);padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:8px;">
+    <div>
+      <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:6px;">FREE CLASSIFIEDS</div>
+      <div style="font-size:22px;font-weight:800;color:#fff;">Buy, Sell & Rent in <span style="color:#6EE7B7">Dildarnagar</span></div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px;">Post free ads for property, vehicles, electronics, furniture & more</div>
+    </div>
+    <button class="btn-hero-primary" style="background:#fff;color:#059669;"><i class="fas fa-plus"></i> Post Free Ad</button>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:28px;">
+      <div class="section-title">What <span>Locals Say</span></div>
+      <p style="font-size:14px;color:var(--gray-400);margin-top:6px;">Trusted by thousands of residents & businesses</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Dildarnagar.in has completely changed how I find local services. I found a plumber within 10 minutes — no more asking neighbors every time!"</div>
+        <div class="test-author">
+          <div class="test-avatar">R</div>
+          <div><div class="test-name">Ramesh Yadav</div><div class="test-role">Resident, Ward 5</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Since I listed my medical store on this portal, my customer count has gone up by 40%. The WhatsApp button feature is a game changer for us!"</div>
+        <div class="test-author">
+          <div class="test-avatar">S</div>
+          <div><div class="test-name">Sunita Gupta</div><div class="test-role">Arogya Medical Store</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★☆</div>
+        <div class="test-text">"The local news section is very helpful. I read it every morning to know what's happening in Dildarnagar. Much better than WhatsApp forwards!"</div>
+        <div class="test-author">
+          <div class="test-avatar">M</div>
+          <div><div class="test-name">Mohd. Arshad</div><div class="test-role">Teacher, Ghazipur</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-name">Dildar<span style="color:var(--saffron)">nagar</span>.in</span>
+      <p>Dildarnagar's most trusted local directory, news & services portal. Connecting residents, businesses, and communities since 2024.</p>
+      <p style="margin-top:8px;">📍 Dildarnagar, Ghazipur, Uttar Pradesh — 233001</p>
+      <div class="footer-social" style="margin-top:16px;">
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#categories">All Listings</a></li>
+        <li><a href="#services">Local Services</a></li>
+        <li><a href="#news">Local News</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#jobs">Jobs Board</a></li>
+        <li><a href="#">Classifieds</a></li>
+        <li><a href="#">Community Forum</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>For Business</h4>
+      <ul>
+        <li><a href="#pricing">Add Your Business</a></li>
+        <li><a href="#pricing">Membership Plans</a></li>
+        <li><a href="#pricing">Advertise With Us</a></li>
+        <li><a href="#">Claim Listing</a></li>
+        <li><a href="#">Business Dashboard</a></li>
+        <li><a href="#">Success Stories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:12px;">Get local news & deals in your inbox</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Your email address">
+        <button>Subscribe Now</button>
+      </div>
+      <div style="margin-top:16px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;">Contact Us</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;flex-direction:column;gap:6px;">
+          <span>📞 +91 98765 43210</span>
+          <span>📧 info@dildarnagar.in</span>
+          <span>💬 WhatsApp Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Dildarnagar.in — All Rights Reserved | Made with ❤️ for Dildarnagar</span>
+    <span>
+      <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="#">Terms of Use</a> &nbsp;·&nbsp;
+      <a href="#">Disclaimer</a> &nbsp;·&nbsp;
+      <a href="#">Sitemap</a>
+    </span>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM NAV -->
+<div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <a href="#" class="mob-nav-btn active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#categories" class="mob-nav-btn"><i class="fas fa-th-large"></i><span>Listings</span></a>
+    <a href="#news" class="mob-nav-btn"><i class="fas fa-newspaper"></i><span>News</span></a>
+    <a href="#jobs" class="mob-nav-btn"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
+    <a href="#pricing" class="mob-nav-btn"><i class="fas fa-plus-circle"></i><span>Add</span></a>
+  </div>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-btns">
+  <button class="float-btn float-wa" onclick="window.open('https://wa.me/919876543210')"><i class="fab fa-whatsapp"></i></button>
+  <button class="float-btn float-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+</div>
+
+<script>
+  // Hero Carousel
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let autoSlide = setInterval(() => changeSlide(1), 5000);
+
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+  function changeSlide(dir) {
+    clearInterval(autoSlide);
+    goToSlide(currentSlide + dir);
+    autoSlide = setInterval(() => changeSlide(1), 5000);
+  }
+
+  // Tab switching
+  function setTab(btn, tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Animate elements on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.listing-card, .service-card, .news-item, .event-card, .job-card, .price-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s, border-color 0.25s';
+    observer.observe(el);
+  });
+
+  // Mobile hamburger (basic toggle)
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    alert('Mobile menu — in the full implementation this opens a slide-out drawer with all navigation links.');
+  });
+</script>
+
+<!-- Auth Modal -->
+<div id="auth-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:12px;width:90%;max-width:400px;padding:24px;position:relative;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
+    <button id="auth-modal-close" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;cursor:pointer;color:#9CA3AF;">&times;</button>
+    
+    <div id="auth-tabs" style="display:flex;gap:8px;margin-bottom:20px;border-bottom:2px solid #e5e7eb;">
+      <button class="auth-tab active" data-tab="login" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid var(--saffron);font-weight:700;color:var(--navy);cursor:pointer;">Login</button>
+      <button class="auth-tab" data-tab="register" style="flex:1;padding:10px;background:none;border:none;border-bottom:2px solid transparent;font-weight:700;color:#9CA3AF;cursor:pointer;">Register</button>
+    </div>
+
+    <div id="auth-content">
+      <form id="login-form" style="display:block;">
+        <h4 style="margin-bottom:12px;color:var(--navy);">Welcome Back</h4>
+        <input name="email" type="email" placeholder="Email" required style="display:block;width:100%;margin-bottom:10px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;">
+        <input name="password" type="password" placeholder="Password" required style="display:block;width:100%;margin-bottom:16px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;">
+        <button type="submit" style="width:100%;padding:12px;background:var(--saffron);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:inherit;">Login</button>
+      </form>
+
+      <form id="register-form" style="display:none;">
+        <h4 style="margin-bottom:12px;color:var(--navy);">Create Account</h4>
+        <input name="full_name" type="text" placeholder="Full name" required style="display:block;width:100%;margin-bottom:10px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;">
+        <input name="email" type="email" placeholder="Email" required style="display:block;width:100%;margin-bottom:10px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;">
+        <input name="password" type="password" placeholder="Password (min 8 chars)" required style="display:block;width:100%;margin-bottom:10px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;">
+        <input name="phone" type="text" placeholder="Phone (optional)" style="display:block;width:100%;margin-bottom:16px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;">
+        <button type="submit" style="width:100%;padding:12px;background:var(--saffron);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:inherit;">Register</button>
+      </form>
+    </div>
+
+    <p id="auth-status" style="margin-top:12px;text-align:center;font-size:14px;"></p>
+    <p id="current-user" style="margin-top:12px;text-align:center;font-size:14px;color:#065f46;"></p>
+    <button id="logout-btn" type="button" style="display:none;margin-top:12px;width:100%;padding:10px;background:#fff;color:var(--navy);border:1px solid #e5e7eb;border-radius:8px;cursor:pointer;font-family:inherit;">Logout</button>
+  </div>
+</div>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/auth-ui.js"></script>
+<script src="assets/js/listings.js"></script>
+<script src="assets/js/content.js"></script>
+<script src="assets/js/search.js"></script>
+
+<script>
+/**
+ * Render listings on page load
+ */
+async function renderListings() {
+  const container = document.getElementById('listings-container');
+  if (!container) return;
+
+  try {
+    // Clear loading state
+    container.innerHTML = '';
+
+    // Fetch listings from API
+    const listingsData = await window.listings.fetchListings({ limit: 12 });
+
+    if (!listingsData || listingsData.length === 0) {
+      container.innerHTML = '<div style="grid-column:1/-1; padding:40px; text-align:center; color:#999;"><p>No listings available yet. Be the first to add one!</p></div>';
+      return;
+    }
+
+    // Render each listing card
+    listingsData.forEach((listing) => {
+      const card = createListingCard(listing);
+      container.appendChild(card);
+    });
+
+    // Update category counts
+    updateCategoryCounts(listingsData);
+
+  } catch (error) {
+    console.error('Error loading listings:', error);
+    container.innerHTML = '<div style="grid-column:1/-1; padding:40px; text-align:center; color:#e53e3e;"><p>⚠️ Error loading listings. Please try refreshing the page.</p></div>';
+  }
+}
+
+/**
+ * Create a listing card DOM element
+ */
+function createListingCard(listing) {
+  const card = document.createElement('div');
+  card.className = 'listing-card';
+
+  // Get a gradient background color based on category
+  const gradients = {
+    healthcare: 'linear-gradient(135deg,#EFF6FF,#DBEAFE)',
+    restaurant: 'linear-gradient(135deg,#FFF7ED,#FED7AA)',
+    banking: 'linear-gradient(135deg,#F0FDF4,#BBF7D0)',
+    education: 'linear-gradient(135deg,#F5F3FF,#DDD6FE)',
+    pharmacy: 'linear-gradient(135deg,#FFF1F2,#FECDD3)',
+    hotel: 'linear-gradient(135deg,#ECFDF5,#A7F3D0)',
+  };
+
+  const gradient = gradients[listing.category?.toLowerCase()] || 'linear-gradient(135deg,#F3F4F6,#E5E7EB)';
+  const categoryEmoji = getCategoryEmoji(listing.category);
+
+  const price = listing.price ? `₹${parseFloat(listing.price).toLocaleString('en-IN')}` : '';
+
+  // Use image if available, otherwise use gradient with emoji
+  const imageStyle = listing.image_url 
+    ? `background-image: url('${listing.image_url}'); background-size: cover; background-position: center;`
+    : `background: ${gradient}`;
+  const imageContent = listing.image_url ? '' : categoryEmoji;
+
+  card.innerHTML = `
+    <div class="listing-img" style="${imageStyle}">${imageContent}
+      <span class="listing-badge badge-verified">✅ Verified</span>
+    </div>
+    <div class="listing-body">
+      <div class="listing-cat">${escapeHtml(listing.category)}</div>
+      <div class="listing-name">${escapeHtml(listing.title)}</div>
+      ${listing.location ? `<div class="listing-addr"><i class="fas fa-map-marker-alt"></i> ${escapeHtml(listing.location)}</div>` : ''}
+      <div class="listing-desc">${escapeHtml(listing.description || 'Business listing on Dildarnagar.in')}</div>
+      <div class="listing-meta">
+        ${price ? `<div class="listing-rating"><i class="fas fa-rupee-sign"></i> ${price}</div>` : '<div class="listing-rating"><i class="fas fa-star"></i> New</div>'}
+        <span class="listing-open open">● Active</span>
+      </div>
+    </div>
+    <div class="listing-footer">
+      <button class="btn-call" onclick="window.location.href='tel:${listing.phone}'"><i class="fas fa-phone"></i> Call</button>
+      <button class="btn-whatsapp" onclick="window.open('https://wa.me/${listing.phone.replace(/\D/g, '')}','_blank')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+      <button class="btn-more" onclick="viewListing(${listing.id})">More</button>
+    </div>
+  `;
+
+  return card;
+}
+
+/**
+ * Get emoji for category
+ */
+function getCategoryEmoji(category) {
+  const emojiMap = {
+    'Healthcare': '🏥',
+    'Hospital': '🏥',
+    'Doctor': '👨‍⚕️',
+    'Pharmacy': '💊',
+    'Restaurant': '🍛',
+    'Food': '🍱',
+    'Hotel': '🏨',
+    'Lodging': '🛏️',
+    'Education': '🎓',
+    'School': '📚',
+    'Banking': '🏦',
+    'Bank': '🏦',
+    'Transport': '🚗',
+    'Taxi': '🚕',
+    'Grocery': '🛒',
+    'Shop': '🏪',
+    'Electrician': '⚡',
+    'Plumber': '🔧',
+    'Salon': '💇',
+    'Real Estate': '🔑',
+    'Lawyer': '⚖️',
+  };
+
+  return emojiMap[category] || '📍';
+}
+
+/**
+ * Escape HTML special characters
+ */
+function escapeHtml(text) {
+  if (!text) return '';
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+/**
+ * View full listing details
+ */
+function viewListing(listingId) {
+  // Navigate to listing detail page
+  window.location.href = `listing-detail.html?id=${listingId}`;
+}
+
+/**
+ * Update category counts based on listings data
+ */
+function updateCategoryCounts(listingsData) {
+  const categoryCounts = {};
+  listingsData.forEach((listing) => {
+    const cat = listing.category || 'Other';
+    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+  });
+
+  // Update category cards if they exist
+  const categoryCards = document.querySelectorAll('.cat-card');
+  categoryCards.forEach((card) => {
+    const catName = card.querySelector('.cat-name')?.textContent || '';
+    if (categoryCounts[catName]) {
+      const countElement = card.querySelector('.cat-count');
+      if (countElement) {
+        countElement.textContent = `${categoryCounts[catName]} listing${categoryCounts[catName] !== 1 ? 's' : ''}`;
+      }
+    }
+  });
+}
+
+// Load listings when page is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderListings);
+} else {
+  renderListings();
+}
+</script>
+
+</body>
+</html>
