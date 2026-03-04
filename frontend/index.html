@@ -2170,6 +2170,92 @@ function setQuickSearch(type) {
 
 <script>
 /**
+ * Dummy sample listings for display
+ */
+const dummyListings = [
+  {
+    id: 1,
+    title: 'City Hospital Dildarnagar',
+    category: 'Healthcare',
+    description: '24x7 Emergency Services, ICU, X-Ray & Lab Facilities',
+    location: 'Main Road, Near Railway Station',
+    phone: '9876543210',
+    price: null,
+    is_active: true
+  },
+  {
+    id: 2,
+    title: 'Mehta Sweet House',
+    category: 'Restaurant',
+    description: 'Famous for Kachori, Samosa & Traditional Sweets',
+    location: 'Bazar Chowk, Dildarnagar',
+    phone: '9876543211',
+    price: 150,
+    is_active: true
+  },
+  {
+    id: 3,
+    title: 'State Bank of India',
+    category: 'Banking',
+    description: 'All Banking Services, ATM, Savings & Loans',
+    location: 'Station Road',
+    phone: '9876543212',
+    price: null,
+    is_active: true
+  },
+  {
+    id: 4,
+    title: 'Delhi Public School',
+    category: 'Education',
+    description: 'CBSE Affiliated, Classes Nursery to 12th',
+    location: 'School Road, Dildarnagar',
+    phone: '9876543213',
+    price: 15000,
+    is_active: true
+  },
+  {
+    id: 5,
+    title: 'Apollo Pharmacy',
+    category: 'Pharmacy',
+    description: '24x7 Medical Store, Home Delivery Available',
+    location: 'Main Market',
+    phone: '9876543214',
+    price: null,
+    is_active: true
+  },
+  {
+    id: 6,
+    title: 'Ganges View Hotel',
+    category: 'Hotel',
+    description: 'AC/Non-AC Rooms, Restaurant, Free WiFi',
+    location: 'Near Bus Stand',
+    phone: '9876543215',
+    price: 1200,
+    is_active: true
+  },
+  {
+    id: 7,
+    title: 'Sharma Electronics',
+    category: 'Shopping',
+    description: 'Mobile, TV, Laptop, Home Appliances',
+    location: 'Gandhi Chowk',
+    phone: '9876543216',
+    price: null,
+    is_active: true
+  },
+  {
+    id: 8,
+    title: 'Royal Biryani House',
+    category: 'Restaurant',
+    description: 'Authentic Biryani, Kebabs, Chinese & Tandoor',
+    location: 'Market Road',
+    phone: '9876543217',
+    price: 250,
+    is_active: true
+  }
+];
+
+/**
  * Render listings on page load
  */
 async function renderListings() {
@@ -2181,11 +2267,11 @@ async function renderListings() {
     container.innerHTML = '';
 
     // Fetch listings from API
-    const listingsData = await window.listings.fetchListings({ limit: 12 });
+    let listingsData = await window.listings.fetchListings({ limit: 12 });
 
+    // Use dummy data if API returns no listings
     if (!listingsData || listingsData.length === 0) {
-      container.innerHTML = '<div style="grid-column:1/-1; padding:40px; text-align:center; color:#999;"><p>No listings available yet. Be the first to add one!</p></div>';
-      return;
+      listingsData = dummyListings;
     }
 
     // Render each listing card
@@ -2199,7 +2285,13 @@ async function renderListings() {
 
   } catch (error) {
     console.error('Error loading listings:', error);
-    container.innerHTML = '<div style="grid-column:1/-1; padding:40px; text-align:center; color:#e53e3e;"><p>⚠️ Error loading listings. Please try refreshing the page.</p></div>';
+    // Show dummy data even on error
+    const listingsData = dummyListings;
+    listingsData.forEach((listing) => {
+      const card = createListingCard(listing);
+      container.appendChild(card);
+    });
+    updateCategoryCounts(listingsData);
   }
 }
 
