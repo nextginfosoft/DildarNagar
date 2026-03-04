@@ -58,8 +58,13 @@ app.include_router(jobs_router, prefix="/api")
 
 @app.on_event("startup")
 async def on_startup() -> None:
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    try:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        print("✅ Database connection successful")
+    except Exception as e:
+        print(f"⚠️  Database connection failed during startup: {str(e)}")
+        print("App will continue but database operations may fail")
 
 @app.get("/")
 async def root():
